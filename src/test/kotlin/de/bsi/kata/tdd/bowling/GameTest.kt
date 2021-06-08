@@ -17,7 +17,7 @@ class GameTest {
     }
 
     @ParameterizedTest
-    @CsvSource("5,22,", "1,21")
+    @CsvSource("5,22,", "1,21", "10,13")
     fun tooManyRolesTest(pins: Int, roles: Int) {
         assertThrows<IllegalStateException> { roleMany(pins, roles) }
     }
