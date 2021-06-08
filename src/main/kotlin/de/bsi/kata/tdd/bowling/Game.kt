@@ -2,12 +2,14 @@ package de.bsi.kata.tdd.bowling
 
 class Game {
 
-    fun role(pins: Int) {
+    private val pinsRolled = IntArray(21)
 
+    fun role(pins: Int) {
+        pinsRolled[0] = pins
     }
 
     fun score(): Int {
-        return 0
+        return pinsRolled.sum()
     }
 
 }

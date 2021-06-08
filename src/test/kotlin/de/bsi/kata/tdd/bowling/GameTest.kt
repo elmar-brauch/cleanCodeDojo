@@ -5,18 +5,23 @@ import org.junit.jupiter.api.Test
 
 class GameTest {
 
-    val game = Game()
+    private val game = Game()
 
     @Test
     fun roleOnly0() {
-        game.role(0)
+        roleMany(0, 20)
         assertEquals(0, game.score())
     }
 
     @Test
     fun roleOnly1() {
-        game.role(1)
-        assertEquals(1, game.score())
+        roleMany(1, 20)
+        assertEquals(20, game.score())
+    }
+
+    private fun roleMany(pins: Int, roles: Int) {
+        for (i in 1..roles)
+            game.role(pins)
     }
 
 }
