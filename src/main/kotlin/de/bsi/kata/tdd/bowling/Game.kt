@@ -15,14 +15,20 @@ class Game {
     }
 
     fun score(): Int {
-        return pinsRolled.sum()
+        var sum = pinsRolled[18] + pinsRolled[19] + pinsRolled[20]
+        for (role in 0..17) {
+            sum += pinsRolled[role]
+            if (isSpare(role))
+                sum += pinsRolled[role + 1]
+        }
+        return sum
     }
 
-    private fun isOver() = pinsRolled.size <= currentRole || (currentRole == 20 && (!isSpare(19) || !isStrike(19)))
+    private fun isOver() = currentRole > 20 || currentRole == 20 && !(isSpare(18) || isStrike(18))
 
-    private fun isSpare(role: Int) = pinsRolled[role] < 10 &&
+    private fun isSpare(role: Int) = role % 2 == 0 && pinsRolled[role] < 10 &&
             pinsRolled[role] + pinsRolled[role + 1] == 10
 
-    private fun isStrike(role: Int) = pinsRolled[role] == 10
+    private fun isStrike(role: Int) = role % 2 == 0 && pinsRolled[role] == 10
 
 }
