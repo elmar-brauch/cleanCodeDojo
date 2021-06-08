@@ -1,7 +1,6 @@
 package de.bsi.kata.tdd.bowling
 
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
@@ -17,9 +16,10 @@ class GameTest {
         assertEquals(expectedScore, game.score())
     }
 
-    @Test
-    fun tooManyRolesTest() {
-        assertThrows<IllegalStateException> { roleMany(5, 22) }
+    @ParameterizedTest
+    @CsvSource("5,22,", "1,21")
+    fun tooManyRolesTest(pins: Int, roles: Int) {
+        assertThrows<IllegalStateException> { roleMany(pins, roles) }
     }
 
     private fun roleMany(pins: Int, roles: Int) {

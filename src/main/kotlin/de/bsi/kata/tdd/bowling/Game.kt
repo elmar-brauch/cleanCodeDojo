@@ -6,6 +6,8 @@ class Game {
     private var role = 0
 
     fun role(pins: Int) {
+        if (pinsRolled.size <= role)
+            throw IllegalStateException("Game is over.")
         pinsRolled[role++] = pins
     }
 
