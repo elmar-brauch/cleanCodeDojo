@@ -19,7 +19,9 @@ class Game {
         for (role in 0..17) {
             sum += pinsRolled[role]
             if (isSpare(role))
-                sum += pinsRolled[role + 1]
+                sum += pinsRolled[role+2]
+            if (isStrike(role))
+                sum += pinsRolled[role+2] + if (isStrike(role+2)) pinsRolled[role+4] else pinsRolled[role+3]
         }
         return sum
     }

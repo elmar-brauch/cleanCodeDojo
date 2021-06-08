@@ -11,7 +11,7 @@ class GameTest {
     private val game = Game()
 
     @ParameterizedTest
-    @CsvSource("0,0,20,", "20,1,20", "150, 5, 21")
+    @CsvSource("0,0,20,", "20,1,20", "150, 5, 21", "300, 10, 12")
     fun fullRoundTest(expectedScore: Int, pins: Int, roles: Int) {
         roleMany(pins, roles)
         assertEquals(expectedScore, game.score())
